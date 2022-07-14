@@ -1,0 +1,25 @@
+{
+  "name": "fergal-home",
+  "version": "0.0.1",
+  "description": "AI Enabled Home Assistant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F3rgz/fergal-home.git"
+  },
+  "keywords": [
+    "automate",
+    "picovoice",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "Fergal Eccles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/F3rgz/fergal-home/issues"
+  },
+  "homepage": "https://github.com/F3rgz/fergal-home#readme"
+}
