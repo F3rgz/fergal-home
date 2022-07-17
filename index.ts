@@ -60,7 +60,9 @@ process.on("SIGINT", function () {
 (async function () {
     try {
         await listener();
-    } catch (e) {
-        console.error(e.toString());
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            console.log(`Things exploded (${err.message})`);
+        }
     }
 })();
