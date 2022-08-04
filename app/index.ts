@@ -22,31 +22,33 @@ const sensitivities = [0.5];
 const audioDeviceIndex = process.env.AUDO_DEVICE || 0;
 const isInterrupted = false;
 
+// eslint-disable-next-line dot-notation
+const options = program.opts();
+console.log(options);
+if (options.show_audio_devices) {
+  const devices = PvRecorder.getAudioDevices();
+  for (let i = 0; i < devices.length; i++) {
+    console.log(`index: ${i}, device name: ${devices[i]}`);
+  }
+  process.exit();
+}
+
 async function listener() {
   console.log(accessKey);
   console.log(testKeyword);
+  console.log(audioDeviceIndex)
 
   if (!accessKey) {
     console.log('ACCESS_KEY not defined in .env file');
     return;
   }
 
-  // eslint-disable-next-line dot-notation
-  const showAudioDevices = program.getOptionValue('showAudioDevices');
-  console.log(showAudioDevices);
-  if (showAudioDevices !== undefined) {
-    const devices = PvRecorder.getAudioDevices();
-    for (let i = 0; i < devices.length; i++) {
-      console.log(`index: ${i}, device name: ${devices[i]}`);
-    }
-    process.exit();
-  }
-
   const keywordPaths = [getBuiltinKeywordPath(BuiltinKeyword.PICOVOICE)];
 
   const wakeHandler = new Porcupine(accessKey, keywordPaths, sensitivities);
 
-  const { frameLength } = wakeHandler;
+  const { frameLength } = wakeHandler
+  console.log(frameLength)
 
   const recorder = new PvRecorder(audioDeviceIndex, frameLength);
   recorder.start();
